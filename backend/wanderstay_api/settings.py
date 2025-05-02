@@ -7,7 +7,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*', 'travelingwo.onrender.com').split(',')
+
+# Include your actual domain(s) here
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,travelingwo.onrender.com').split(',')
 
 # APPS
 INSTALLED_APPS = [
@@ -57,7 +59,7 @@ WSGI_APPLICATION = 'wanderstay_api.wsgi.application'
 # DATABASE (PostgreSQL via DATABASE_URL)
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
+        default=os.getenv('DATABASE_URL', 'postgres://wanderuser:wanderpass@localhost:5432/wanderdb'),
         conn_max_age=600,
         ssl_require=True
     )
