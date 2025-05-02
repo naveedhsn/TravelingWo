@@ -1,4 +1,4 @@
-// File: /Users/naveedhossain/Downloads/wanderstay_fullstack/frontend/app/layout.tsx
+// File: /Users/naveedhossain/Downloads/TravelingWo/frontend/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
