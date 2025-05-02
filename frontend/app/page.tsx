@@ -17,7 +17,7 @@ export default function WandericHome() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/posts/")
+    fetch("https://travelingwo.onrender.com/api/posts/")
       .then(res => res.json())
       .then(data => setPosts(data));
   }, []);
