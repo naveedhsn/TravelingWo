@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework import routers
 from blog.views import PostViewSet, CategoryViewSet, SubscribeView
 
@@ -20,4 +20,12 @@ from django.conf.urls.static import static
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+else:
+    # Serve media files in production using re_path
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', static_serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
 
