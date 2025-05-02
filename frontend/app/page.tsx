@@ -57,7 +57,7 @@ export default function WandericHome() {
           {posts.map((post) => (
             <div key={post.id} className="bg-white rounded-xl overflow-hidden shadow hover:shadow-lg transition">
               <Image
-                src={`https://travelingwo.onrender.com/api/posts/${post.image}`}
+                src={`https://travelingwo.onrender.com${post.image}`}
                 alt={post.title}
                 width={600}
                 height={400}
