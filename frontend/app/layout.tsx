@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'WanderStay',
+  title: 'TravelingWo',
   description: 'Wanderic-style travel blog built with Next.js + Tailwind',
 }
 
