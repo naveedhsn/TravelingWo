@@ -1,13 +1,17 @@
 import os
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-dev-key'
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+# SECURITY
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
 
+# APPS
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -15,12 +19,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders',
     'blog',
 ]
 
+# MIDDLEWARE
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # should be at top
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,53 +54,33 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wanderstay_api.wsgi.application'
 
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-import dj_database_url
+# DATABASE (PostgreSQL via DATABASE_URL)
 DATABASES = {
-  'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
-
+# AUTH
 AUTH_PASSWORD_VALIDATORS = []
 
+# TIME & LANG
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# STATIC & MEDIA
 STATIC_URL = '/static/'
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ALLOW_ALL_ORIGINS = True
-
-INSTALLED_APPS += ["corsheaders"]
-MIDDLEWARE.insert(0, "corsheaders.middleware.CorsMiddleware")
-CORS_ALLOW_ALL_ORIGINS = True
-
-INSTALLED_APPS = [
-    # remove any duplicates here
-    'corsheaders',  # ✅ Only include once!
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'rest_framework',
-    'blog',
-]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# CORS
+CORS_ALLOW_ALL_ORIGINS = True
+
+# DEFAULT FIELD TYPE
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
