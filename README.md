@@ -1,4 +1,4 @@
-# WanderStay Fullstack Project
+# TravelingWo
 
 This is the base structure placeholder. Final version will include:
 - Docker support
