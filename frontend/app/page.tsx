@@ -112,7 +112,7 @@ export default function WandericHome() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-orange-500 py-8 mt-10 text-center text-sm text-gray-500">
+      <footer className="bg-orange-500 py-8 mt-10 text-center text-sm text-white">
         <p>&copy; {new Date().getFullYear()} TravelingWo All rights reserved.</p>
       </footer>
     </main>
