@@ -9,7 +9,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-dev-key')
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 # Include your actual domain(s) here
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,travelingwo.onrender.com').split(',')
+ALLOWED_HOSTS = ['travelingwo.onrender.com', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,travelingwo.onrender.com').split(',')
 
 # APPS
 INSTALLED_APPS = [
