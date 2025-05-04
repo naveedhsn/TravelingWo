@@ -60,6 +60,7 @@ export default function ContactPage() {
             <Link href="/">Home</Link>
             <Link href="/destinations">Destinations</Link>
             <Link href="/guides">Guides</Link>
+            <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
