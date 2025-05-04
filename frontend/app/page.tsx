@@ -29,10 +29,10 @@ export default function WandericHome() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-5">
           <h1 className="text-2xl font-bold text-orange-500">TravelingWo</h1>
           <nav className="space-x-6 font-medium">
-            <Link href="#">Home</Link>
-            <Link href="#">Destinations</Link>
-            <Link href="#">Guides</Link>
-            <Link href="#">Contact</Link>
+            <Link href="/">Home</Link>
+            <Link href="/destinations">Destinations</Link>
+            <Link href="/guides">Guides</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
         </div>
       </header>
@@ -51,6 +51,35 @@ export default function WandericHome() {
         </div>
       </div>
 
+      {/* Featured Destinations */}
+      <section className="max-w-7xl mx-auto py-16 px-4">
+        <h2 className="text-3xl font-bold text-center text-orange-500 mb-10">Top Destinations</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { name: "Bali, Indonesia", image: "/destinations/bali.jpg" },
+            { name: "Paris, France", image: "/destinations/paris.jpg" },
+            { name: "Maldives", image: "/destinations/maldives.jpg" },
+          ].map((dest, index) => (
+            <div key={index} className="relative h-60 group rounded-xl overflow-hidden shadow hover:shadow-lg transition w-full">
+              <Image
+                src={dest.image}
+                alt={dest.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-3">
+                <h3 className="text-white text-lg font-semibold text-center group-hover:underline">{dest.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-6">
+          <Link href="/destinations" className="inline-block text-orange-500 font-medium hover:underline">
+            See All Destinations →
+          </Link>
+        </div>
+      </section>
+
       {/* Blog Grid */}
       <section className="max-w-7xl mx-auto py-16 px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -65,7 +94,6 @@ export default function WandericHome() {
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold">{post.title}</h3>
-                {/* Wrap Markdown inside a div to apply styles */}
                 <div className="text-gray-600 text-sm mt-2">
                   <ReactMarkdown>
                     {`${post.content.slice(0, 200)}...`}
