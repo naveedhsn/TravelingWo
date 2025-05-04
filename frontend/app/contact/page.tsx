@@ -55,8 +55,8 @@ export default function ContactPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-5 space-y-4 md:space-y-0">
-          <h1 className="text-2xl font-bold text-orange-500">TravelingWo</h1>
-          <nav className="space-x-4 text-center md:text-left">
+        <h1 className="text-2xl font-bold text-orange-500"><Link href="/">TravelingWo</Link></h1>
+        <nav className="space-x-4 text-center md:text-left">
             <Link href="/">Home</Link>
             <Link href="/destinations">Destinations</Link>
             <Link href="/guides">Guides</Link>
