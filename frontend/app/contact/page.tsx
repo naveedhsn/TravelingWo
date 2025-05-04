@@ -57,11 +57,11 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-5 space-y-4 md:space-y-0">
         <h1 className="text-2xl font-bold text-orange-500"><Link href="/">TravelingWo</Link></h1>
         <nav className="space-x-4 text-center md:text-left">
-            <Link href="/">Home</Link>
-            <Link href="/destinations">Destinations</Link>
-            <Link href="/guides">Guides</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/" className="hover:text-orange-500">Home</Link>
+            <Link href="/destinations" className="hover:text-orange-500">Destinations</Link>
+            <Link href="/guides" className="hover:text-orange-500">Guides</Link>
+            <Link href="/blog" className="hover:text-orange-500">Blog</Link>
+            <Link href="/contact" className="hover:text-orange-500">Contact</Link>
           </nav>
         </div>
       </header>
