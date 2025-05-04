@@ -26,9 +26,9 @@ export default function GuidesPage() {
     <div className="flex flex-col min-h-screen bg-white text-gray-800">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-5">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between px-4 py-5 space-y-3 sm:space-y-0">
           <h1 className="text-2xl font-bold text-orange-500">TravelingWo</h1>
-          <nav className="space-x-6 font-medium">
+          <nav className="space-x-4 sm:space-x-6 font-medium text-center">
             <Link href="/">Home</Link>
             <Link href="/destinations">Destinations</Link>
             <Link href="/guides">Guides</Link>
@@ -37,10 +37,10 @@ export default function GuidesPage() {
         </div>
       </header>
 
-      {/* Intro */}
-      <section className="max-w-5xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-4xl font-bold mb-4 text-orange-500">Travel Guides</h2>
-        <p className="text-gray-600 text-lg">
+      {/* Intro Section */}
+      <section className="max-w-5xl mx-auto px-4 py-14 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-orange-500">Travel Guides</h2>
+        <p className="text-gray-600 text-base md:text-lg">
           Discover detailed travel guides to help you plan smarter, travel cheaper, and explore deeper.
         </p>
       </section>
@@ -50,9 +50,9 @@ export default function GuidesPage() {
         {guides.map((guide, idx) => (
           <div
             key={idx}
-            className="rounded-xl overflow-hidden shadow hover:shadow-lg transition bg-white"
+            className="rounded-xl overflow-hidden shadow hover:shadow-lg transition bg-white flex flex-col"
           >
-            <div className="relative h-48 w-full">
+            <div className="relative w-full h-48 md:h-60">
               <Image
                 src={guide.image}
                 alt={guide.title}
@@ -60,17 +60,24 @@ export default function GuidesPage() {
                 className="object-cover"
               />
             </div>
-            <div className="p-5">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">{guide.title}</h3>
-              <p className="text-sm text-gray-600">{guide.description}</p>
-              <Link href="#" className="text-orange-500 mt-3 inline-block hover:underline">Read Guide →</Link>
+            <div className="p-5 flex flex-col justify-between flex-grow">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{guide.title}</h3>
+                <p className="text-sm text-gray-600">{guide.description}</p>
+              </div>
+              <Link
+                href="#"
+                className="text-orange-500 mt-4 inline-block hover:underline font-medium"
+              >
+                Read Guide →
+              </Link>
             </div>
           </div>
         ))}
       </section>
 
       {/* Footer */}
-      <footer className="bg-orange-500 py-8 text-center text-sm text-white mt-auto">
+      <footer className="bg-orange-500 py-6 text-center text-sm text-white mt-auto">
         <p>&copy; {new Date().getFullYear()} TravelingWo All rights reserved.</p>
       </footer>
     </div>

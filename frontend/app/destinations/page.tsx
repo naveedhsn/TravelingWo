@@ -21,12 +21,12 @@ export default function DestinationsPage() {
     <div className="flex flex-col min-h-screen bg-white text-gray-800">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-5">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between px-4 py-5 space-y-4 sm:space-y-0">
           <h1 className="text-2xl font-bold text-orange-500">TravelingWo</h1>
-          <nav className="space-x-6 font-medium">
+          <nav className="space-x-4 sm:space-x-6 text-center">
             <Link href="/">Home</Link>
             <Link href="/destinations">Destinations</Link>
-            <Link href="guides">Guides</Link>
+            <Link href="/guides">Guides</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>
@@ -34,7 +34,7 @@ export default function DestinationsPage() {
 
       {/* Main Content */}
       <main className="flex-grow">
-        <section className="max-w-7xl mx-auto py-16 px-4">
+        <section className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-orange-500 mb-10">
             Top Travel Destinations
           </h2>
@@ -44,7 +44,7 @@ export default function DestinationsPage() {
             <input
               type="text"
               placeholder="Search destinations"
-              className="w-full max-w-md p-3 border rounded-md shadow"
+              className="w-full max-w-md p-3 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -56,7 +56,7 @@ export default function DestinationsPage() {
               filteredDestinations.map((dest, index) => (
                 <div
                   key={index}
-                  className="relative rounded-xl overflow-hidden shadow hover:shadow-lg transition h-60 w-full"
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden shadow hover:shadow-lg transition"
                 >
                   <Image
                     src={dest.image}
@@ -72,7 +72,7 @@ export default function DestinationsPage() {
                 </div>
               ))
             ) : (
-              <p className="col-span-3 text-center text-gray-500">
+              <p className="col-span-full text-center text-gray-500">
                 No destinations found.
               </p>
             )}
@@ -81,7 +81,7 @@ export default function DestinationsPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-orange-500 py-8 text-center text-sm text-white mt-auto">
+      <footer className="bg-orange-500 py-6 text-center text-sm text-white">
         <p>&copy; {new Date().getFullYear()} TravelingWo All rights reserved.</p>
       </footer>
     </div>
